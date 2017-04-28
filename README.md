@@ -16,4 +16,4 @@
 
 
 ## ER-диаграмма моделей
-![er-diagram](http://i12.pixs.ru/storage/7/6/0/ERPNG_4345536_26014760.png)
+![er-diagram](http://i12.pixs.ru/storage/4/7/0/ERPNG_1093698_26023470.png)
