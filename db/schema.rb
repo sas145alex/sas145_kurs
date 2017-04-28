@@ -95,7 +95,6 @@ ActiveRecord::Schema.define(version: 20170428140836) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "shelves", ["hall_id", "shelf_index"], name: "index_shelves_on_hall_id_and_shelf_index", unique: true, using: :btree
   add_index "shelves", ["hall_id"], name: "index_shelves_on_hall_id", using: :btree
 
   create_table "users", force: :cascade do |t|

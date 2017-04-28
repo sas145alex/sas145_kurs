@@ -20,7 +20,7 @@
         = f.number_field :quantity, class: 'form-control'
     .col-md-8
       .form-group
-        = f.label :author
+        = f.label :authors
         = f.collection_select(:author_ids, Author.all, :id, :name_with_initial, {promt: 'Сделайте выбор', include_blank: true}, {multiple: true})
         -# = f.collection_select(:book, :author_ids, Author.all, :id, :name_with_initial)
         -# = f.select :author_ids, options_for_select(Author.all.map { |a| [a.name_with_initial, a.id]}), {promt: 'asdfasdf', include_blank: true}, { multiple: true }

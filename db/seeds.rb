@@ -42,16 +42,16 @@ s44 = Shelf.create(shelf_index: 'q44', hall_id: h4.id)
 
 
 # создание авторов
-a1 = Author.create(fn: 'Федор', ln: 'Достоевский', sn: 'Михайлович', author_idndex: 'ФДМ')
-a2 = Author.create(fn: 'Альфред', ln: 'Ахо', author_idndex: 'АА4')
-a3 = Author.create(fn: 'Эдвард', ln: 'Хопкрофт', author_idndex: 'АА5')
-a4= Author.create(fn: 'Andrew', ln: 'Tanenbaum', author_idndex: 'GL675')
+a1 = Author.create(fn: 'Федор', ln: 'Достоевский', sn: 'Михайлович', author_index: 'ФДМ')
+a2 = Author.create(fn: 'Альфред', ln: 'Ахо', author_index: 'АА4')
+a3 = Author.create(fn: 'Эдвард', ln: 'Хопкрофт', author_index: 'АА5')
+a4= Author.create(fn: 'Andrew', ln: 'Tanenbaum', author_index: 'GL675')
 
 # создание книг
 b11 = Book.create(name: 'Преступление и наказание', isbn: 'GN47', quantity: 20, volume: 1)
 b12 = Book.create(name: 'Преступление и наказание', isbn: 'GN48', quantity: 13, volume: 2)
 b13 = Book.create(name: 'Бедные люди', isbn: 'GN317', quantity: 10)
-b14 = Book.create(name: 'Бесы', isbn: 'GN317', quantity: 10)
+b14 = Book.create(name: 'Бесы', isbn: 'GN318', quantity: 10)
 
 b231 = Book.create(name: 'Структуры данных и алгоритмы', isbn: '0-201-00023-7 ', quantity: 10)
 b232 = Book.create(name: 'Введение в теорию автоматов, языков и вычислений', isbn: ' 0-201-44124-1', quantity: 10)
@@ -59,11 +59,11 @@ b232 = Book.create(name: 'Введение в теорию автоматов, �
 b2 = Book.create(name: 'Foundations of Computer Science', isbn: '16-321-46174-1', quantity: 1)
 
 b41 = Book.create(name: 'Structured Computer Organizatoin', isbn: '16-497-46174-1', quantity: 12)
-b42 = Book.create(name: 'Modern Operating Sustem', isbn: '36-497-41104-6', quantity: 22, volume: 1)
-b43 = Book.create(name: 'Modern Operating Sustem', isbn: '46-497-41101-6', quantity: 2, volume: 2)
+b42 = Book.create(name: 'Modern Operating System', isbn: '36-497-41104-6', quantity: 22, volume: 1)
+b43 = Book.create(name: 'Modern Operating System', isbn: '46-497-41101-6', quantity: 2, volume: 2)
 
 # создание связей книг и авторов
 a1.books << b11 << b12 << b13 << b14
 a2.books << b231 << b232 << b2
-b3.books << b231 << b232
-b4.books << b41 << b42 << b43
+a3.books << b231 << b232
+a4.books << b41 << b42 << b43

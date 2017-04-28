@@ -8,8 +8,6 @@ class CreateShelves < ActiveRecord::Migration
 
     end
 
-    add_index(:shelves, [:hall_id, :shelf_index], unique: true)
-
     reversible do |dir|
       dir.up do
         execute "ALTER TABLE shelves ADD CONSTRAINT chk_shelf_ind_length

@@ -80,7 +80,7 @@ ru:
         volume: Том
         isbn: ISBN
         quantity: Количество
-        authors: Автор/авторский указатель
+        authors: Авторы
 
       role:
         name: Обозначение
