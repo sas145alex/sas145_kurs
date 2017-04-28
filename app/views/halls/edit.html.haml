@@ -1,0 +1,11 @@
+=breadcrumb_tag do
+  %li.active
+    = "Зал #{@hall.short_name}"
+  %li
+    = link_to t('app.halls.index'), halls_path
+  %li
+    Модели
+
+%h1= t('app.halls.edit')
+
+= render 'form'

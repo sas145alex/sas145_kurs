@@ -4,7 +4,7 @@ module SideBarHelper
     result << {
       :name => 'Сслыка без детей',
       :icon => 'list',
-      :controller => :welcome, 
+      :controller => :welcome,
       :action => :index
     }
     result << {
@@ -22,7 +22,7 @@ module SideBarHelper
        :controller => :roles, :action => :index,
        :icon => 'align-center',
        :class => 'long'},
-    ]} 
+    ]}
     result << {
       :name => 'Заголовок ссылок',
       :icon => 'search-plus',
@@ -34,14 +34,28 @@ module SideBarHelper
        :controller => :welcome, :action => :index,
        :icon => 'search',
        :class => 'long'}
-    ]} 
+    ]}
+    result << {
+      :name => 'Модели',
+      :icon => 'tasks',
+      :children => [
+        {:name => 'Залы',
+        :controller => :halls, :action => :index,
+        :icon => 'hospital-o',
+        :class => 'long'},
+        {:name => 'Стеллажи',
+        :controller => :shelves, :action => :index,
+        :icon => 'archive'}
+
+      ]
+    }
     result
   end
-  
+
   def is_open?(ctr, act)
     case ctr.to_s
     when 'users', 'roles'
-      ctr.to_s == controller_name.to_s  
+      ctr.to_s == controller_name.to_s
     else
       false
     end

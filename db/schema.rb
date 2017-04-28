@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409205031) do
+ActiveRecord::Schema.define(version: 20170428094534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20170409205031) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "halls", force: :cascade do |t|
+    t.string   "short_name", null: false
+    t.text     "full_name",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "role_users", force: :cascade do |t|
     t.integer  "role_id",    null: false
@@ -53,6 +60,16 @@ ActiveRecord::Schema.define(version: 20170409205031) do
 
   add_index "roles", ["info"], name: "index_roles_on_info", unique: true, using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", unique: true, using: :btree
+
+  create_table "shelves", force: :cascade do |t|
+    t.string   "shelf_index", null: false
+    t.integer  "hall_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "shelves", ["hall_id", "shelf_index"], name: "index_shelves_on_hall_id_and_shelf_index", unique: true, using: :btree
+  add_index "shelves", ["hall_id"], name: "index_shelves_on_hall_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                                       null: false
@@ -97,4 +114,5 @@ ActiveRecord::Schema.define(version: 20170409205031) do
 
   add_foreign_key "role_users", "roles"
   add_foreign_key "role_users", "users"
+  add_foreign_key "shelves", "halls"
 end

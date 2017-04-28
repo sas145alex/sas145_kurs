@@ -1,0 +1,14 @@
+= form_for @shelf do |f|
+  = error_messages_for @shelf
+
+  .row
+    .col-md-8
+      .form-group
+        = f.label :shelf_index
+        = f.text_field :shelf_index, class: 'form-control'
+    .col-md-8
+      .form-group
+        = f.label :hall_id
+        = f.select :hall_id, options_for_select(Hall.all.map { |h| [h.short_name, h.id] })
+  .actions
+    = f.submit nil, class: 'btn btn-primary'

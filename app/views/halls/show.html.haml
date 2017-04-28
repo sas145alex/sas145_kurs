@@ -1,0 +1,21 @@
+=breadcrumb_tag do
+  %li.active
+    = "Зал #{@hall.short_name}"
+  %li
+    = link_to t('app.halls.index'), halls_path
+  %li
+    Модели
+
+%h1= @hall.short_name
+
+%dl
+  %dt= Hall.human_attribute_name(:short_name)
+  %dd= @hall.short_name
+  %dt= Hall.human_attribute_name(:full_name)
+  %dd= @hall.full_name
+  %dt= Hall.human_attribute_name(:shelves)
+  %dd= @hall.shelves.pluck(:shelf_index).join(', ')
+
+
+= link_to edit_hall_path(@hall), class: 'btn btn-info' do
+  = fa_icon :edit

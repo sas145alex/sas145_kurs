@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :shelves
+  resources :halls
   resources :role_users
   resources :roles
   resources :password_resets

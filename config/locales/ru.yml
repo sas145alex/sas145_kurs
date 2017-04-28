@@ -6,7 +6,7 @@ ru:
       department: Кафедра
     users:
       index: Список пользователей
-      new-button: Новый пользователь 
+      new-button: Новый пользователь
       edit: Редактирование пользователя
       new: Создание пользователя
     roles:
@@ -14,13 +14,23 @@ ru:
       new-button: Новая роль
       edit: Редактирование роли
       new: Создание роли
+    shelves:
+      index: Список стеллажей
+      new-button: Новый стеллаж
+      edit: Редактирование стеллажа
+      new: Создание стеллажа
+    halls:
+      index: Список библиотечных залов
+      new-button: Новый зал
+      edit: Редактирование зала
+      new: Создание зала
   helpers:
     submit:
       create: Сохранить
       submit: Сохранить
       update: Сохранить
-    sure: Действительно удалить?      
-  
+    sure: Действительно удалить?
+
   views:
     pagination:
       first: ⇤
@@ -41,6 +51,10 @@ ru:
         activation_token_expires_at: Дата прекращения действия токена активации
         last_login_at: Время последнего входа в систему
         role_users: Роли
+      shelf:
+        shelf_index: Индекс стеллажа
+        hall: Зал
+        hall_id: Зал
       role:
         name: Обозначение
         info: Краткое название
@@ -51,4 +65,3 @@ ru:
           attributes:
             snils:
               check_sum: имеет неправильную контрольную сумму
-          

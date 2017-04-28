@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shelf_index: MyString
+  hall_id: 
+
+two:
+  shelf_index: MyString
+  hall_id: 

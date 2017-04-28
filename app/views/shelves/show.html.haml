@@ -1,0 +1,19 @@
+=breadcrumb_tag do
+  %li.active
+    = "Стеллаж #{@shelf.shelf_index}"
+  %li
+    = link_to t('app.shelves.index'), shelves_path
+  %li
+    Модели
+
+%h1= @shelf.shelf_index
+
+%dl
+  %dt= Shelf.human_attribute_name(:shelf_index)
+  %dd= @shelf.shelf_index
+  %dt= Shelf.human_attribute_name(:hall)
+  %dd= @shelf.hall.short_name
+
+
+= link_to edit_shelf_path(@shelf), class: 'btn btn-info' do
+  = fa_icon :edit

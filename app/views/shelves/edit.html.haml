@@ -1,0 +1,11 @@
+=breadcrumb_tag do
+  %li.active
+    = "Стеллаж #{@shelf.shelf_index}"
+  %li
+    = link_to t('app.shelves.index'), shelves_path
+  %li
+    Модели
+
+%h1= t('app.shelves.edit')
+
+= render 'form'
