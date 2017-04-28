@@ -17,6 +17,8 @@
   %dd= @book.isbn
   %dt= Book.human_attribute_name(:quantity)
   %dd= @book.quantity
+  %dt= Book.human_attribute_name(:authors)
+  %dd= authors_array(@book)
 
 = link_to edit_book_path(@book), class: 'btn btn-info' do
   = fa_icon :edit

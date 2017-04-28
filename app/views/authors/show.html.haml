@@ -17,6 +17,8 @@
   %dd= @author.sn
   %dt= Author.human_attribute_name(:author_index)
   %dd= @author.author_index
+  %dt= Author.human_attribute_name(:books)
+  %dd= books_array(@author)
 
 = link_to edit_author_path(@author), class: 'btn btn-info' do
   = fa_icon :edit
