@@ -1,0 +1,11 @@
+=breadcrumb_tag do
+  %li.active
+    = "Автор #{@author.ln}"
+  %li
+    = link_to t('app.authors.index'), authors_path
+  %li
+    Модели
+
+%h1= t('app.authors.edit')
+
+= render 'form'

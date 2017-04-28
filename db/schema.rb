@@ -11,10 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428094534) do
+ActiveRecord::Schema.define(version: 20170428140836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authors", force: :cascade do |t|
+    t.string   "fn",           null: false
+    t.string   "ln",           null: false
+    t.string   "sn"
+    t.string   "author_index", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "authors", ["ln", "author_index"], name: "index_authors_on_ln_and_author_index", unique: true, using: :btree
+
+  create_table "authors_books", id: false, force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "book_id",   null: false
+  end
+
+  add_index "authors_books", ["author_id", "book_id"], name: "index_authors_books_on_author_id_and_book_id", unique: true, using: :btree
+
+  create_table "books", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "isbn",       null: false
+    t.integer  "quantity",   null: false
+    t.integer  "volume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false

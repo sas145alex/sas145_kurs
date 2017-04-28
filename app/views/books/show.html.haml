@@ -1,0 +1,22 @@
+=breadcrumb_tag do
+  %li.active
+    = "Книга #{@book.name}"
+  %li
+    = link_to t('app.books.index'), books_path
+  %li
+    Модели
+
+%h1= @book.name
+
+%dl
+  %dt= Book.human_attribute_name(:name)
+  %dd= @book.name
+  %dt= Book.human_attribute_name(:volume)
+  %dd= @book.volume
+  %dt= Book.human_attribute_name(:isbn)
+  %dd= @book.isbn
+  %dt= Book.human_attribute_name(:quantity)
+  %dd= @book.quantity
+
+= link_to edit_book_path(@book), class: 'btn btn-info' do
+  = fa_icon :edit

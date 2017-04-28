@@ -1,0 +1,22 @@
+=breadcrumb_tag do
+  %li.active
+    = "Автор #{@author.ln}"
+  %li
+    = link_to t('app.authors.index'), authors_path
+  %li
+    Модели
+
+%h1= "#{@author.fn} #{@author.ln} #{@author.sn}"
+
+%dl
+  %dt= Author.human_attribute_name(:fn)
+  %dd= @author.fn
+  %dt= Author.human_attribute_name(:ln)
+  %dd= @author.ln
+  %dt= Author.human_attribute_name(:sn)
+  %dd= @author.sn
+  %dt= Author.human_attribute_name(:author_index)
+  %dd= @author.author_index
+
+= link_to edit_author_path(@author), class: 'btn btn-info' do
+  = fa_icon :edit

@@ -19,6 +19,16 @@ ru:
       new-button: Новый стеллаж
       edit: Редактирование стеллажа
       new: Создание стеллажа
+    authors:
+      index: Список авторов
+      new-button: Новый автор
+      edit: Редактирование автора
+      new: Создание автора
+    books:
+      index: Список книг
+      new-button: Новая книга
+      edit: Редактирование книги
+      new: Создание книги
     halls:
       index: Список библиотечных залов
       new-button: Новый зал
@@ -55,6 +65,23 @@ ru:
         shelf_index: Индекс стеллажа
         hall: Зал
         hall_id: Зал
+      hall:
+        short_name: Название
+        full_name: Полное название
+        shelves: Стелажи
+      author:
+        fn: Имя
+        ln: Фамилия
+        sn: Отчество
+        author_index: Авторский указатель
+        books: Книги автора/ISBN
+      book:
+        name: Название
+        volume: Том
+        isbn: ISBN
+        quantity: Количество
+        authors: Автор/авторский указатель
+
       role:
         name: Обозначение
         info: Краткое название

@@ -1,0 +1,11 @@
+=breadcrumb_tag do
+  %li.active
+    = t('app.books.new')
+  %li
+    = link_to t('app.books.index'), books_path
+  %li
+    Модели
+
+%h1= t('app.books.new')
+
+= render 'form'

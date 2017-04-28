@@ -1,0 +1,40 @@
+=breadcrumb_tag do
+  %li.active
+    Книги
+  %li
+    Модели
+
+%h1= t('app.books.index')
+
+%table.table.table-hover.table-striped.center
+  %caption
+    .pull-right
+      = link_to t('app.books.new-button'), new_book_path, class: 'btn btn-primary'
+  %thead
+    %tr
+      %th= Book.human_attribute_name(:name)
+      %th= Book.human_attribute_name(:volume)
+      %th= Book.human_attribute_name(:isbn)
+      %th= Book.human_attribute_name(:quantity)
+      %th= Book.human_attribute_name(:authors)
+      %th.p50
+      %th.p50
+      %th.p50
+
+  %tbody
+    - @books.each do |book|
+      %tr
+        %td= book.name
+        %td= book.volume
+        %td= book.isbn
+        %td= book.quantity
+        %td= authors_array(book)
+        %td
+          = link_to book, class: 'btn btn-success' do
+            = fa_icon :eye
+        %td
+          = link_to edit_book_path(book), class: 'btn btn-info' do
+            = fa_icon :edit
+        %td
+          = link_to book, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+            = fa_icon :times

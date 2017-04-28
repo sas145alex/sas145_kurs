@@ -45,8 +45,13 @@ module SideBarHelper
         :class => 'long'},
         {:name => 'Стеллажи',
         :controller => :shelves, :action => :index,
-        :icon => 'archive'}
-
+        :icon => 'archive'},
+        {:name => 'Авторы',
+        :controller => :authors, :action => :index,
+        :icon => 'user-circle-o'},
+        {:name => 'Книги',
+        :controller => :books, :action => :index,
+        :icon => 'book'}
       ]
     }
     result
