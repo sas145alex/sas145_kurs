@@ -20,15 +20,20 @@
       %th.p50
       %th.p50
       %th.p50
+      %th.p50
 
   %tbody
     - @books.each do |book|
-      %tr
+      %tr{ id: "book#{book.id}", data: {content: "#{get_shelves(book)}"} }
         %td= book.name
         %td= book.volume
         %td= book.isbn
         %td= book.quantity
         %td= authors_array(book)
+        %td
+          -# = link_to "#", remote: true, class: 'btn' do
+          = link_to get_shelves_book_path(book), remote: true, class: 'btn' do
+            = fa_icon :archive
         %td
           = link_to book, class: 'btn btn-success' do
             = fa_icon :eye

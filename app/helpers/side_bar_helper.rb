@@ -51,7 +51,10 @@ module SideBarHelper
         :icon => 'user-circle-o'},
         {:name => 'Книги',
         :controller => :books, :action => :index,
-        :icon => 'book'}
+        :icon => 'book'},
+        {:name => 'Расположение книг',
+        :controller => :locations, :action => :index,
+        :icon => 'search'}
       ]
     }
     result

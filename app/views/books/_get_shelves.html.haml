@@ -1,0 +1,17 @@
+- if book.shelves.empty?
+  %tr{ id: "book_shelves#{book.id}", class: 'row-with-shalves' }
+    %td{ colspan: 5 }
+      = "Данных книг нет ни на одном из стелажей"
+    %td
+    %td
+    %td
+    %td
+- else
+  %tr{ id: "book_shelves#{book.id}", class: 'row-with-shalves' }
+    %td{ colspan: 5 }
+      = "Расположены на следующих стеллажах: "
+      = book.shelves.pluck(:shelf_index).join(', ')
+    %td
+    %td
+    %td
+    %td

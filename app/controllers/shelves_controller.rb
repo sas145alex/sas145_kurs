@@ -61,6 +61,13 @@ class ShelvesController < ApplicationController
     end
   end
 
+  def get_books
+    # raise params.inspect
+    respond_to do |format|
+      format.js { @shelf = Shelf.find(params[:id]) }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shelf

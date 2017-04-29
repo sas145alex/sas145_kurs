@@ -1,0 +1,20 @@
+=breadcrumb_tag do
+  %li.active
+    = "расположение #{@location.id}"
+  %li
+    = link_to t('app.locations.index'), locations_path
+  %li
+    Модели
+
+%h1= @location.id
+
+%dl
+  %dt= Location.human_attribute_name(:book)
+  %dd= @location.book.name
+  %dt= Location.human_attribute_name(:shelf)
+  %dd= @location.shelf.shelf_index
+  %dt= Location.human_attribute_name(:rack_number)
+  %dd= @location.rack_number
+
+= link_to edit_location_path(@location), class: 'btn btn-info' do
+  = fa_icon :edit

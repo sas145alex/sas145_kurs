@@ -18,12 +18,16 @@
       %th.p50
       %th.p50
       %th.p50
+      %th.p50
 
   %tbody
     - @shelves.order(:hall_id, :shelf_index).each do |shelf|
-      %tr
+      %tr{ id: "shelf#{shelf.id}", data: {content: "#{get_books(shelf)}"} }
         %td= shelf.shelf_index
         %td= shelf.hall.short_name
+        %td
+          = link_to get_books_shelf_path(shelf), remote: true, class: 'btn' do
+            = fa_icon :archive
         %td
           = link_to shelf, class: 'btn btn-success' do
             = fa_icon :eye

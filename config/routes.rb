@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  resources :books
+  resources :locations
+  resources :books do
+    member do
+      get :get_shelves
+    end
+  end
   resources :authors
-  resources :shelves
+  resources :shelves do
+    member do
+      get :get_books
+    end
+  end
   resources :halls
   resources :role_users
   resources :roles

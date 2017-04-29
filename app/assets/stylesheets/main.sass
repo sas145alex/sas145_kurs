@@ -96,13 +96,21 @@ a
   th
     text-align: center
     vertical-align: middle !important
+  tr.row-with-shalves
+    border-top: 0px
+    border-bottom: 1px solid black
   &.center
     td
       text-align: center
       vertical-align: middle !important
 .p50
   width: 50px
-      
+
+div.row
+  margin-bottom: 5px
+  padding-top: 5px
+  border: 1px solid #9d9d9d
+
 .easy-hidden
   display: none
 
@@ -179,9 +187,9 @@ a
     font-size: 80%
     display: inline-block
   &.badge-middle
-    min-width: 100px    
+    min-width: 100px
   &.badge-long
-    min-width: 130px    
+    min-width: 130px
 .notop
   border-top-style: none
 .nobottom
@@ -196,7 +204,7 @@ a
   text-align: center
   border-radius: 7px
   $x_sizes: (150 200 300 400 500 600)
-  @each $x_size in $x_sizes 
+  @each $x_size in $x_sizes
     &.x#{$x_size}
       width: #{$x_size}px
 .panel
@@ -236,7 +244,7 @@ a
   width: 100%
   text-align: center
 $paddings: (5 10 20 30 40 50)
-@each $padding  in $paddings 
+@each $padding  in $paddings
   .left#{$padding}
     padding-left: #{$padding}px
   .right#{$padding}
@@ -260,7 +268,7 @@ $paddings: (5 10 20 30 40 50)
     #sidebar-toggle
       left: 0
 $percents: (90 85 80 75 70 65 60 55 50 40 30 20 10 5)
-@each $percent in $percents 
+@each $percent in $percents
   .small#{$percent}
     font-size: #{$percent+'%'}
     padding: #{round($padding-base-vertical * $percent / 100)} #{round($padding-base-horizontal * $percent / 100)} #{round($padding-base-vertical * $percent / 100)} #{round($padding-base-horizontal * $percent / 100)}

@@ -1,0 +1,11 @@
+=breadcrumb_tag do
+  %li.active
+    = "Расположение"
+  %li
+    = link_to t('app.locations.index'), locations_path
+  %li
+    Модели
+
+%h1= t('app.locations.edit')
+
+= render 'form'

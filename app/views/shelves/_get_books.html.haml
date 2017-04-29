@@ -1,0 +1,17 @@
+- if shelf.books.empty?
+  %tr{ id: "shelf_books#{shelf.id}", class: 'row-with-shalves' }
+    %td{ colspan: 2 }
+      = "На данном стелаже нет книг"
+    %td
+    %td
+    %td
+    %td
+- else
+  %tr{ id: "shelf_books#{shelf.id}", class: 'row-with-shalves' }
+    %td{ colspan: 2 }
+      = "На данном стелаже есть книги: "
+      = shelf.books.pluck(:name).join(', ')
+    %td
+    %td
+    %td
+    %td

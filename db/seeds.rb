@@ -45,7 +45,7 @@ s44 = Shelf.create(shelf_index: 'q44', hall_id: h4.id)
 a1 = Author.create(fn: 'Федор', ln: 'Достоевский', sn: 'Михайлович', author_index: 'ФДМ')
 a2 = Author.create(fn: 'Альфред', ln: 'Ахо', author_index: 'АА4')
 a3 = Author.create(fn: 'Эдвард', ln: 'Хопкрофт', author_index: 'АА5')
-a4= Author.create(fn: 'Andrew', ln: 'Tanenbaum', author_index: 'GL675')
+a4 = Author.create(fn: 'Andrew', ln: 'Tanenbaum', author_index: 'GL675')
 
 # создание книг
 b11 = Book.create(name: 'Преступление и наказание', isbn: 'GN47', quantity: 20, volume: 1)
@@ -67,3 +67,19 @@ a1.books << b11 << b12 << b13 << b14
 a2.books << b231 << b232 << b2
 a3.books << b231 << b232
 a4.books << b41 << b42 << b43
+
+# располагаем книги на стеллажи
+Location.create(book_id: b2.id,  shelf_id: s41.id, rack_number: 10)
+Location.create(book_id: b2.id,  shelf_id: s44.id, rack_number: 10)
+Location.create(book_id: b2.id,  shelf_id: s31.id, rack_number: 10)
+Location.create(book_id: b2.id,  shelf_id: s11.id, rack_number: 10)
+
+Location.create(book_id: b42.id, shelf_id: s11.id, rack_number: 7)
+Location.create(book_id: b42.id, shelf_id: s12.id, rack_number: 7)
+Location.create(book_id: b42.id, shelf_id: s22.id, rack_number: 7)
+Location.create(book_id: b42.id, shelf_id: s31.id, rack_number: 7)
+
+Location.create(book_id: b13.id, shelf_id: s43.id, rack_number: 7)
+Location.create(book_id: b13.id, shelf_id: s21.id, rack_number: 7)
+Location.create(book_id: b11.id, shelf_id: s22.id, rack_number: 7)
+Location.create(book_id: b11.id, shelf_id: s11.id, rack_number: 7)

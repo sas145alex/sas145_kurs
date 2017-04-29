@@ -1,0 +1,13 @@
+.row
+  .col-md-8
+    .form-group
+      = form.label :book_id
+      = form.select :book_id, options_for_select(Book.all.map{|b| [b.name,b.id]})
+  .col-md-8
+    .form-group
+      = form.label :shelf_id
+      = form.select :shelf_id, options_for_select(Shelf.all.map{|s| [s.shelf_index,s.id]})
+  .col-md-8
+    .form-group
+      = form.label :rack_number
+      = form.number_field :rack_number, class: 'form-control'

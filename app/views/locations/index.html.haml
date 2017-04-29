@@ -1,0 +1,36 @@
+=breadcrumb_tag do
+  %li.active
+    Расположение
+  %li
+    Модели
+
+%h1= t('app.locatoins.index')
+
+%table.table.table-hover.table-striped.center
+  %caption
+    .pull-right
+      = link_to t('app.locations.new-button'), new_location_path, class: 'btn btn-primary'
+  %thead
+    %tr
+      %th= Book.human_attribute_name(:book)
+      %th= Book.human_attribute_name(:shelf)
+      %th= Book.human_attribute_name(:rack_number)
+      %th.p50
+      %th.p50
+      %th.p50
+
+  %tbody
+    - @locations.each do |location|
+      %tr
+        %td= location.book.name
+        %td= location.shelf.shelf_index
+        %td= location.rack_number
+        %td
+          = link_to location, class: 'btn btn-success' do
+            = fa_icon :eye
+        %td
+          = link_to edit_location_path(location), class: 'btn btn-info' do
+            = fa_icon :edit
+        %td
+          = link_to location, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+            = fa_icon :times

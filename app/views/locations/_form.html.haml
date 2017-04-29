@@ -1,0 +1,10 @@
+= form_for @location do |f|
+  = error_messages_for @location
+
+  .actions
+    = f.submit nil, class: 'btn btn-primary'
+    -# = link_to "Добавить форму", '#', id: "add_form",
+    -# class: 'btn btn-success', remote: true,
+    -# data: { content: "#{get_location_form(f)}" }
+
+  = render('single_location_form', form: f)

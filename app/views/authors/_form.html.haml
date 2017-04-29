@@ -21,6 +21,6 @@
     .col-md-8
       .form-group
         = f.label :books
-        = f.select :book_ids, options_for_select(Book.all.map { |b| ["#{b.name} ISBN:#{b.isbn}", b.id]}), {}, { multiple: true }
+        = f.select :book_ids, options_for_select(Book.all.map { |b| ["#{b.name} ISBN:#{b.isbn}", b.id]}), {include_blank: true}, { multiple: true }
   .actions
     = f.submit nil, class: 'btn btn-primary'
