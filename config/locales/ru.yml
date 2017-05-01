@@ -86,11 +86,16 @@ ru:
         isbn: ISBN
         quantity: Количество
         authors: Авторы
-
       role:
         name: Обозначение
         info: Краткое название
         full_info: Описание
+      location:
+        book: Книга
+        book_id: Книга
+        shelf: Стеллаж
+        shelf_id: Стеллаж
+        rack_number: Номер полки
     errors:
       models:
         person:

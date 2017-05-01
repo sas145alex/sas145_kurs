@@ -4,7 +4,7 @@
   %li
     Модели
 
-%h1= t('app.locatoins.index')
+%h1= t('app.locations.index')
 
 %table.table.table-hover.table-striped.center
   %caption
@@ -12,9 +12,9 @@
       = link_to t('app.locations.new-button'), new_location_path, class: 'btn btn-primary'
   %thead
     %tr
-      %th= Book.human_attribute_name(:book)
-      %th= Book.human_attribute_name(:shelf)
-      %th= Book.human_attribute_name(:rack_number)
+      %th= Location.human_attribute_name(:book)
+      %th= Location.human_attribute_name(:shelf)
+      %th= Location.human_attribute_name(:rack_number)
       %th.p50
       %th.p50
       %th.p50
