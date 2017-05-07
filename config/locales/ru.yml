@@ -4,6 +4,7 @@ ru:
     company:
       short_name: МПУ
       department: Кафедра
+<<<<<<< HEAD
     users:
       index: Список пользователей
       new-button: Новый пользователь
@@ -39,13 +40,37 @@ ru:
       new-button: Добавить книгу на стеллаж
       edit: Перемещение книги
       new: Добавление книги на стеллаж
+=======
+>>>>>>> c630329de2731b731f940191dafc9a6c4c38fb93
   helpers:
     submit:
       create: Сохранить
       submit: Сохранить
       update: Сохранить
+<<<<<<< HEAD
     sure: Действительно удалить?
 
+=======
+  buttons:
+    edit: Редактировать
+    destroy: Удалить
+    show: Показать
+    confirm:
+      user: Действительно удалить пользователя?
+      role: Действительно удалить роль?
+    new: 
+      user: Новый пользователь
+      role: Новая роль
+  headers:
+    users:
+      edit: Редактирование пользователя
+      new: Новый пользователь
+      index: Список пользователей
+    roles:
+      index: Список возможных ролей пользователей
+      edit: Редактирование роли
+      new: Новая роль
+>>>>>>> c630329de2731b731f940191dafc9a6c4c38fb93
   views:
     pagination:
       first: ⇤
@@ -59,6 +84,7 @@ ru:
     attributes:
       user:
         email: Пользовательское имя/электронная почта
+        birthday: Дата рождения
         password: Пароль
         password_confirmation: Подтверждение пароля
         reset_password_email_sent_at: Дата отправления письма для смены пароля
@@ -90,6 +116,7 @@ ru:
         name: Обозначение
         info: Краткое название
         full_info: Описание
+<<<<<<< HEAD
       location:
         book: Книга
         book_id: Книга
@@ -102,3 +129,6 @@ ru:
           attributes:
             snils:
               check_sum: имеет неправильную контрольную сумму
+=======
+          
+>>>>>>> c630329de2731b731f940191dafc9a6c4c38fb93
