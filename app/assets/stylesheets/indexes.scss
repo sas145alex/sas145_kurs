@@ -1,0 +1,83 @@
+// Place all the styles related to the Books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$row-height: 170px;
+$entry-height: 130px;
+
+div.entry-row {
+  background: rgba(#000000, 0.08);
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  margin-bottom: 3px;
+  max-height: $row-height;
+
+
+  .row-header {
+    padding: 2px;
+    background: #afda5f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .row-header-left {
+      font-size: 1.0em;
+      line-height: 2.0;
+      font-weight: bold;
+    }
+    .row-header-right {
+      display: flex;
+      flex-direction: row;
+      visibility: hidden;
+    }
+  }
+
+  .row-body {
+    padding: 2px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    overflow: hidden;
+    align-items: flex-start;
+
+    .buttons div a{
+      margin-top: 1px;
+      margin-bottom: 1px;
+      width: 120px;
+    }
+
+
+    .entry-description, .entry-assotiations, .entry-locations {
+      max-height: $entry-height;
+      overflow-y: scroll;
+      max-width: 33%;
+      min-width: 21%;
+      font-size: 0.9em;
+
+      span {
+        font-weight: bold;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-sm) {
+  div.entry-row {
+    font-size: 0.8em;
+    .row-header {
+      .row-header-right {
+        visibility: visible;
+      }
+    }
+    .buttons {
+      display: none;
+    }
+  }
+}

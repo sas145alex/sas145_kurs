@@ -2,10 +2,11 @@
   %li.active
     = "Зал #{@hall.short_name}"
   %li
-    = link_to t('app.halls.index'), halls_path
+    = link_to t('headers.halls.index'), halls_path
   %li
     Модели
 
-%h1= t('app.halls.edit')
+.page-header
+  %h1= t('headers.halls.edit')
 
 = render 'form'

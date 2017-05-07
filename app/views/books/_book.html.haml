@@ -1,0 +1,61 @@
+%div{ id: "book#{book.id}", class: 'entry-row'}
+  %div.row-header
+    %div.row-header-left
+      = book.name
+    %div.row-header-right
+      %div
+        = link_to book, class: 'btn btn-success' do
+          = fa_icon :eye
+      %div
+        = link_to edit_book_path(book), class: 'btn btn-info' do
+          = fa_icon :edit
+      %div
+        = link_to book,
+        :method => :delete,
+        :data => { :confirm => t('buttons.confirm.book') },
+        class: 'btn btn-danger' do
+          = fa_icon :times
+  %div.row-body
+    %div.entry-description
+      %span=t('headers.books.row.description')
+      %ul
+        %li
+          = "#{t('activerecord.attributes.book.volume')}: #{book.volume}"
+        %li
+          = "#{t('activerecord.attributes.book.isbn')}: #{book.isbn}"
+        %li
+          = "#{t('activerecord.attributes.book.quantity')}: #{book.quantity}"
+
+    %div.entry-assotiations
+      %span=t('headers.books.row.authors')
+      %ul
+        - book.authors.each do |author|
+          %li= author.name_with_initial
+    %div.entry-locations
+      %span=t('headers.books.row.shelves')
+      - if (book.shelves.ids.empty?)
+        %ul
+          %li
+            = "не указано"
+      - else
+        %ul
+          - book.shelves.uniq.each do |shelf|
+            %li
+              = shelf.shelf_index
+
+    %div.buttons
+      %div
+        = link_to book, class: 'btn btn-success' do
+          = fa_icon :eye
+          = t('buttons.show')
+      %div
+        = link_to edit_book_path(book), class: 'btn btn-info' do
+          = fa_icon :edit
+          = t('buttons.edit')
+      %div
+        = link_to book,
+        :method => :delete,
+        :data => { :confirm => t('buttons.confirm.book') },
+        class: 'btn btn-danger' do
+          = fa_icon :times
+          = t('buttons.destroy')

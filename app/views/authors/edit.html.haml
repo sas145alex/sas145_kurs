@@ -2,10 +2,10 @@
   %li.active
     = "Автор #{@author.ln}"
   %li
-    = link_to t('app.authors.index'), authors_path
+    = link_to t('headers.authors.index'), authors_path
   %li
     Модели
 
-%h1= t('app.authors.edit')
+%h1= t('headers.authors.edit')
 
 = render 'form'

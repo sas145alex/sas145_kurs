@@ -2,10 +2,11 @@
   %li.active
     = "Книга #{@book.name}"
   %li
-    = link_to t('app.books.index'), books_path
+    = link_to t('headers.books.index'), books_path
   %li
     Модели
 
-%h1= t('app.books.edit')
+.page-header
+  %h1= t('headers.books.edit')
 
 = render 'form'

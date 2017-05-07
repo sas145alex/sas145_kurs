@@ -1,0 +1,56 @@
+%div{ id: "shelf#{shelf.id}", class: 'entry-row'}
+  %div.row-header
+    %div.row-header-left
+      = shelf.shelf_index
+    %div.row-header-right
+      %div
+        = link_to shelf, class: 'btn btn-success' do
+          = fa_icon :eye
+      %div
+        = link_to edit_shelf_path(shelf), class: 'btn btn-info' do
+          = fa_icon :edit
+      %div
+        = link_to shelf,
+        :method => :delete,
+        :data => { :confirm => t('buttons.confirm.shelf') },
+        class: 'btn btn-danger' do
+          = fa_icon :times
+  %div.row-body
+    %div.entry-description
+      %span=t('headers.shelves.row.description')
+      %ul
+        %li
+          = "#{t('activerecord.attributes.shelf.shelf_index')}: #{shelf.shelf_index}"
+
+    %div.entry-assotiations
+      %span=t('headers.shelves.row.hall')
+      %ul
+        %li= shelf.hall.short_name
+    %div.entry-locations
+      %span=t('headers.shelves.row.books')
+      - if (shelf.books.ids.empty?)
+        %ul
+          %li
+            = "не указано"
+      - else
+        %ul
+          - shelf.books.uniq.each do |book|
+            %li
+              = book.name
+
+    %div.buttons
+      %div
+        = link_to shelf, class: 'btn btn-success' do
+          = fa_icon :eye
+          = t('buttons.show')
+      %div
+        = link_to edit_shelf_path(shelf), class: 'btn btn-info' do
+          = fa_icon :edit
+          = t('buttons.edit')
+      %div
+        = link_to shelf,
+        :method => :delete,
+        :data => { :confirm => t('buttons.confirm.shelf') },
+        class: 'btn btn-danger' do
+          = fa_icon :times
+          = t('buttons.destroy')

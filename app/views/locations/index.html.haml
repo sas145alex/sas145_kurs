@@ -4,12 +4,13 @@
   %li
     Модели
 
-%h1= t('app.locations.index')
+.page-header
+  %h1= t('headers.locations.index')
 
 %table.table.table-hover.table-striped.center
   %caption
     .pull-right
-      = link_to t('app.locations.new-button'), new_location_path, class: 'btn btn-primary'
+      = link_to t('buttons.new.location'), new_location_path, class: 'btn btn-primary'
   %thead
     %tr
       %th= Location.human_attribute_name(:book)
@@ -32,5 +33,7 @@
           = link_to edit_location_path(location), class: 'btn btn-info' do
             = fa_icon :edit
         %td
-          = link_to location, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+          = link_to location, :method => :delete,
+          :data => { :confirm => t('buttons.confirm.location') },
+          class: 'btn btn-danger' do
             = fa_icon :times

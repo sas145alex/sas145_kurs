@@ -9,4 +9,10 @@ class Book < ActiveRecord::Base
   validates :volume, numericality: { only_integer: true, greater_than: 0,
     message: "должно быть больше нуля"}, allow_blank: true
   validates :isbn, uniqueness: true
+
+
+
+  def get_rack_numbers(shelf_id)
+    locations.where(book_id: self.id, shelf_id: shelf_id).pluck(:rack_number)
+  end
 end

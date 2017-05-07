@@ -3,7 +3,7 @@ module SideBarHelper
     result = []
     result << {
       :name => 'Сслыка без детей',
-      :icon => 'list',
+      :icon => 'bed',
       :controller => :welcome,
       :action => :index
     }
@@ -24,20 +24,20 @@ module SideBarHelper
        :class => 'long'},
     ]}
     result << {
-      :name => 'Заголовок ссылок',
-      :icon => 'search-plus',
+      :name => 'Интерфейсы',
+      :icon => 'vcard',
       :children => [
-      {:name => 'Ссылка ребёнок',
-       :controller => :welcome, :action => :index,
-       :icon => 'binoculars'},
-      {:name => 'Ссылка ребёнок',
-       :controller => :welcome, :action => :index,
-       :icon => 'search',
+      {:name => 'Книги',
+       :controller => :books, :action => :index,
+       :icon => 'book'},
+      {:name => 'Стеллажи',
+       :controller => :shelves, :action => :index,
+       :icon => 'archive',
        :class => 'long'}
     ]}
     result << {
       :name => 'Модели',
-      :icon => 'tasks',
+      :icon => 'list',
       :children => [
         {:name => 'Залы',
         :controller => :halls, :action => :index,

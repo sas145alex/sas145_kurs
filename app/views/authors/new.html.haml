@@ -1,11 +1,12 @@
 =breadcrumb_tag do
   %li.active
-    = t('app.authors.new')
+    = t('headers.authors.new')
   %li
-    = link_to t('app.authors.index'), authors_path
+    = link_to t('headers.authors.index'), authors_path
   %li
     Модели
 
-%h1= t('app.authors.new')
+.page-header
+  %h1= t('headers.authors.new')
 
 = render 'form'

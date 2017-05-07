@@ -2,11 +2,12 @@
   %li.active
     = "Стеллаж #{@shelf.shelf_index}"
   %li
-    = link_to t('app.shelves.index'), shelves_path
+    = link_to t('headers.shelves.index'), shelves_path
   %li
     Модели
 
-%h1= @shelf.shelf_index
+.page-header
+  %h1= @shelf.shelf_index
 
 %dl
   %dt= Shelf.human_attribute_name(:shelf_index)

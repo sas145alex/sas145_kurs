@@ -2,11 +2,12 @@
   %li.active
     = "расположение #{@location.id}"
   %li
-    = link_to t('app.locations.index'), locations_path
+    = link_to t('headers.locations.index'), locations_path
   %li
     Модели
 
-%h1= @location.id
+.page-header
+  %h1= @location.id
 
 %dl
   %dt= Location.human_attribute_name(:book)

@@ -2,11 +2,12 @@
   %li.active
     = "Книга #{@book.name}"
   %li
-    = link_to t('app.books.index'), books_path
+    = link_to t('headers.books.index'), books_path
   %li
     Модели
 
-%h1= @book.name
+.page-header
+  %h1= @book.name
 
 %dl
   %dt= Book.human_attribute_name(:name)
@@ -18,7 +19,7 @@
   %dt= Book.human_attribute_name(:quantity)
   %dd= @book.quantity
   %dt= Book.human_attribute_name(:authors)
-  %dd= authors_array(@book)
+  %dd= show_authors(@book)
 
 = link_to edit_book_path(@book), class: 'btn btn-info' do
   = fa_icon :edit
