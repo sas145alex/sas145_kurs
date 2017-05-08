@@ -9,7 +9,16 @@ ru:
       create: Сохранить
       submit: Сохранить
       update: Сохранить
+
+  forms:
+    book:
+      locations: Расположение
+      book: Книга
+      authors: Авторы
   buttons:
+    book:
+      add_author: Создать
+      remove_author: Удалить
     edit: Изменить
     destroy: Удалить
     show: Показать

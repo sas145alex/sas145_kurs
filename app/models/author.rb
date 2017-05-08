@@ -8,4 +8,8 @@ class Author < ActiveRecord::Base
   def name_with_initial
     "#{fn.first}. #{ln}"
   end
+
+  def self.attributes_names
+    self.new.attributes.keys - ['created_at', 'updated_at']
+  end
 end

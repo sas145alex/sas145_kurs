@@ -24,6 +24,7 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
+    # raise params.to_s
     @book = Book.new(book_params)
 
     respond_to do |format|
@@ -40,6 +41,8 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
+    # raise params.to_s
+    # raise book_params.to_s
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
@@ -76,6 +79,9 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:name, :volume, :isbn, :quantity, author_ids: [])
+      # raise params.to_s
+      params.require(:book).permit(:name, :volume, :isbn, :quantity, author_ids: [],
+          authors_attributes: Author.attributes_names.map(&:to_sym).push(:_destroy),
+          locations_attributes: [:id, :shelf_id, :book_id, :rack_number, :_destroy] )
     end
 end
