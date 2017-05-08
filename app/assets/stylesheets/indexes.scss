@@ -2,7 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $row-height: 170px;
-$entry-height: 130px;
+$entry-height: 100px;
+
+.btn-primary {
+  margin-bottom: 3px;  
+}
 
 div.entry-row {
   background: rgba(#000000, 0.08);
@@ -27,9 +31,8 @@ div.entry-row {
       font-weight: bold;
     }
     .row-header-right {
-      display: flex;
-      flex-direction: row;
-      visibility: hidden;
+      display: none;
+
     }
   }
 
@@ -47,13 +50,16 @@ div.entry-row {
       width: 120px;
     }
 
-
+    .entry-description:hover, .entry-assotiations:hover, .entry-locations:hover {
+      border-right: 0;
+      overflow-y: scroll;
+    }
     .entry-description, .entry-assotiations, .entry-locations {
       max-height: $entry-height;
-      overflow-y: scroll;
-      max-width: 33%;
-      min-width: 21%;
+      min-height: $entry-height;
+      overflow-y: hidden;
       font-size: 0.9em;
+      border-right: 5px solid transparent;
 
       span {
         font-weight: bold;
@@ -73,7 +79,8 @@ div.entry-row {
     font-size: 0.8em;
     .row-header {
       .row-header-right {
-        visibility: visible;
+        display: flex;
+        flex-direction: row;
       }
     }
     .buttons {
