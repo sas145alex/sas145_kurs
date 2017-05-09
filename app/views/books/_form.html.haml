@@ -26,18 +26,22 @@
             -# = f.label :authors
             -# = f.collection_select(:author_ids, Author.all, :id, :name_with_initial, {promt: 'Сделайте выбор', include_blank: true}, {multiple: true})
 
-  %div.form-wrapper
+  %div.form-wrapper#wrapper_for_authors
     %div.form-header
       = t('forms.book.authors')
+      = link_to_add_association (fa_icon :plus), f, :authors,
+      class: 'btn btn-success',
+      data:{ association_insertion_node: '#authors',
+      association_insertion_method: :prepend  },
+      :wrap_object => Proc.new { |author| author.books.build; author }
+      = f.select :authors,
+      options_for_select(Author.all.map { |a| ["#{a.name_with_initial}", a.id] }),
+      {include_blank: true}, {}
     %div.form-body
       %table.table
         %thead
           %th
-            = link_to_add_association (fa_icon :plus), f, :authors,
-            class: 'btn btn-success',
-            data:{ association_insertion_node: '#authors',
-            association_insertion_method: :prepend  },
-            :wrap_object => Proc.new { |author| author.books.build; author }
+          %th id!!
           %th= t('activerecord.attributes.author.fn')
           %th= t('activerecord.attributes.author.ln')
           %th= t('activerecord.attributes.author.sn')

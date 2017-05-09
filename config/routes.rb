@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  # get '/fill_nested_form' => 'routes#fill_nested_form'
+  # get 'books/fill_author_form' => 'books#fill_author_form'
   resources :locations
   resources :books do
     member do
       get :get_shelves
+      get 'fill_author_form'
     end
   end
+
   resources :authors
   resources :shelves do
     member do

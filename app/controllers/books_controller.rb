@@ -41,10 +41,29 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
-    # raise params.to_s
+    # ВНИМАНИЕ КОСТЫЛЬ
+    # выдираем из массива параметров данные с теми авторами,
+    # которые уже были в БД, но еще не были добавлены для этой книги
+    existing_authors_ids = []
+    params[:book][:authors_attributes].each do |k,v|
+      current = v
+      if k.to_i > @book.authors.count  &&
+         current[:_destroy]=="false" && !current[:id].empty?
+        #  raise current.inspect
+        tmp = params[:book][:authors_attributes].delete(k)
+        existing_authors_ids << tmp[:id]
+      end
+    end
+    # raise tmp.to_s
     # raise book_params.to_s
     respond_to do |format|
       if @book.update(book_params)
+
+        existing_authors_ids.each do |id|
+          author = Author.find(id)
+          @book.authors << author
+        end
+
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
         format.json { render :show, status: :ok, location: @book }
       else
@@ -71,6 +90,14 @@ class BooksController < ApplicationController
     end
   end
 
+  def fill_author_form
+    # raise params.to_s
+    @author = Author.where(id: params[:author_id]).first
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
@@ -80,7 +107,9 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       # raise params.to_s
-      params.require(:book).permit(:name, :volume, :isbn, :quantity, author_ids: [],
+      params.require(:book).permit(:name, :volume, :isbn, :quantity,
+        authors: [],
+        author_ids: [],
           authors_attributes: Author.attributes_names.map(&:to_sym).push(:_destroy),
           locations_attributes: [:id, :shelf_id, :book_id, :rack_number, :_destroy] )
     end

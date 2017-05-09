@@ -1,11 +1,13 @@
 %tr.nested-fields
   %td
     = link_to_remove_association (fa_icon :remove), f, class: 'btn btn-danger'
-  %td
+  %td.author-id
+    = f.hidden_field :id, class: 'form-control'
+  %td.author-fn
     = f.text_field :fn, class: 'form-control'
-  %td
+  %td.author-ln
     = f.text_field :ln, class: 'form-control'
-  %td
+  %td.author-sn
     = f.text_field :sn, class: 'form-control'
-  %td
+  %td.author-author-index
     = f.text_field :author_index, class: 'form-control'
