@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # get '/fill_nested_form' => 'routes#fill_nested_form'
-  # get 'books/fill_author_form' => 'books#fill_author_form'
+  get 'books/fill_author_form' => 'books#fill_author_form'
+  # get 'shelves/fill_author_form' => 'books#fill_author_form'
+  post 'fill_hall_form' => 'shelves#fill_hall_form'
   resources :locations
   resources :books do
     member do
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   resources :shelves do
     member do
       get :get_books
+      # get 'fill_hall_form'
     end
   end
   resources :halls
@@ -32,6 +34,8 @@ Rails.application.routes.draw do
       get :activate
     end
   end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

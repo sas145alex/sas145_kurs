@@ -1,6 +1,6 @@
 =breadcrumb_tag do
   %li.active
-    = "Книга #{@book.name}"
+    = "#{@book.name}"
   %li
     = link_to t('headers.books.index'), books_path
   %li
@@ -9,17 +9,52 @@
 .page-header
   %h1= @book.name
 
-%dl
-  %dt= Book.human_attribute_name(:name)
-  %dd= @book.name
-  %dt= Book.human_attribute_name(:volume)
-  %dd= @book.volume
-  %dt= Book.human_attribute_name(:isbn)
-  %dd= @book.isbn
-  %dt= Book.human_attribute_name(:quantity)
-  %dd= @book.quantity
-  %dt= Book.human_attribute_name(:authors)
-  %dd= show_authors(@book)
+%div.attributes
+  %h3= t('forms.book.book')
+  %table.table.table-hover.table-striped.center
+    %tr
+      %th= Book.human_attribute_name(:name)
+      %th= Book.human_attribute_name(:volume)
+      %th= Book.human_attribute_name(:isbn)
+      %th= Book.human_attribute_name(:quantity)
+    %tr
+      %td= @book.name
+      %td= @book.volume
+      %td= @book.isbn
+      %td= @book.quantity
 
-= link_to edit_book_path(@book), class: 'btn btn-info' do
-  = fa_icon :edit
+%div.attributes
+  %h3= Book.human_attribute_name(:authors)
+  %table.table.table-hover.table-striped.center
+    %tr
+      %th= Author.human_attribute_name(:fn)
+      %th= Author.human_attribute_name(:ln)
+      %th= Author.human_attribute_name(:sn)
+      %th= Author.human_attribute_name(:author_index)
+    - @book.authors.each do |author|
+      %tr
+        %td
+          = author.fn
+        %td
+          = author.ln
+        %td
+          = author.sn
+        %td
+          = author.author_index
+%div.attributes
+  %h3= Book.human_attribute_name(:locations)
+  %table.table.table-hover.table-striped.center
+    %tr
+      %th= Location.human_attribute_name(:shelf_id)
+      %th= Location.human_attribute_name(:rack_number)
+    - @book.locations.each do |location|
+      %tr
+        %td
+          = location.shelf.shelf_index
+        %td
+          = location.rack_number
+
+.pull-right
+  = link_to edit_book_path(@book), class: 'btn btn-info' do
+    = fa_icon (:edit)
+    = t('buttons.edit')

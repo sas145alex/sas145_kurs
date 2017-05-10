@@ -21,6 +21,19 @@ class ShelvesController < ApplicationController
   def edit
   end
 
+  def fill_hall_form
+    # raise params[:hall_id]
+    id = params[:hall_id].to_i
+    if id > 0
+      @hall = Hall.find(id)
+    else
+      @hall = nil
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # POST /shelves
   # POST /shelves.json
   def create
@@ -40,6 +53,7 @@ class ShelvesController < ApplicationController
   # PATCH/PUT /shelves/1
   # PATCH/PUT /shelves/1.json
   def update
+    # raise params.to_s
     respond_to do |format|
       if @shelf.update(shelf_params)
         format.html { redirect_to @shelf, notice: 'Shelf was successfully updated.' }
@@ -76,6 +90,7 @@ class ShelvesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shelf_params
-      params.require(:shelf).permit(:shelf_index, :hall_id)
+      params.require(:shelf).permit(:shelf_index, :hall_id,
+        hall_attributes: [:short_name, :full_name, :id])
     end
 end

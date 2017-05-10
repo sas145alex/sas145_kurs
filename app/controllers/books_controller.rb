@@ -25,10 +25,29 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     # raise params.to_s
+    # ВНИМАНИЕ КОСТЫЛЬ
+    # выдираем из массива параметров данные с теми авторами,
+    # которые уже были в БД, но еще не были добавлены для этой книги
+    existing_authors_ids = []
+    params[:book][:authors_attributes].each do |k,v|
+      current = v
+      if current[:_destroy]=="false" && !current[:id].empty?
+        #  raise current.inspect
+        tmp = params[:book][:authors_attributes].delete(k)
+        existing_authors_ids << tmp[:id]
+      end
+    end
+
     @book = Book.new(book_params)
 
     respond_to do |format|
       if @book.save
+        # ПРОДОЛЖЕНИЕ КОСТЫЛЯ
+        existing_authors_ids.each do |id|
+          author = Author.find(id)
+          @book.authors << author
+        end
+
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
@@ -58,7 +77,7 @@ class BooksController < ApplicationController
     # raise book_params.to_s
     respond_to do |format|
       if @book.update(book_params)
-
+        # ПРОДОЛЖЕНИЕ КОСТЫЛЯ
         existing_authors_ids.each do |id|
           author = Author.find(id)
           @book.authors << author
@@ -101,6 +120,7 @@ class BooksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
+      # raise params.to_s
       @book = Book.find(params[:id])
     end
 

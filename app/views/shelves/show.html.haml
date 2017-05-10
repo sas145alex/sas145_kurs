@@ -9,12 +9,40 @@
 .page-header
   %h1= @shelf.shelf_index
 
-%dl
-  %dt= Shelf.human_attribute_name(:shelf_index)
-  %dd= @shelf.shelf_index
-  %dt= Shelf.human_attribute_name(:hall)
-  %dd= @shelf.hall.short_name
+%div.attributes
+  %h3= t('forms.shelf.shelf')
+  %table.table.table-hover.table-striped.center
+    %tr
+      %th= Shelf.human_attribute_name(:shelf_index)
+    %tr
+      %td= @shelf.shelf_index
 
+%div.attributes
+  %h3= Shelf.human_attribute_name(:hall)
+  %table.table.table-hover.table-striped.center
+    %tr
+      %th= Hall.human_attribute_name(:short_name)
+      %th= Hall.human_attribute_name(:full_name)
+      %tr
+        %td
+          = @shelf.hall.short_name
+        %td
+          = @shelf.hall.short_name
 
-= link_to edit_shelf_path(@shelf), class: 'btn btn-info' do
-  = fa_icon :edit
+%div.attributes
+  %h3= t('forms.shelf.locations')
+  %table.table.table-hover.table-striped.center
+    %tr
+      %th= Location.human_attribute_name(:book_id)
+      %th= Location.human_attribute_name(:rack_number)
+    - @shelf.locations.each do |location|
+      %tr
+        %td
+          = location.book.name
+        %td
+          = location.rack_number
+
+.pull-right
+  = link_to edit_shelf_path(@shelf), class: 'btn btn-info' do
+    = fa_icon (:edit)
+    = t('buttons.edit')

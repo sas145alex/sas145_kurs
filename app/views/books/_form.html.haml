@@ -5,19 +5,19 @@
       = t('forms.book.book')
     %div.form-body
       -# .row
-      .col-md-3
+      .col-md-5
         .form-group
           = f.label :name
           = f.text_field :name, class: 'form-control'
-      .col-md-3
+      .col-md-2
         .form-group
-        = f.label :volume
-        = f.number_field :volume, class: 'form-control'
+          = f.label :volume
+          = f.number_field :volume, class: 'form-control'
       .col-md-3
         .form-group
           = f.label :isbn
           = f.text_field :isbn, class: 'form-control'
-      .col-md-3
+      .col-md-2
         .form-group
           = f.label :quantity
           = f.number_field :quantity, class: 'form-control'
@@ -28,20 +28,27 @@
 
   %div.form-wrapper#wrapper_for_authors
     %div.form-header
-      = t('forms.book.authors')
-      = link_to_add_association (fa_icon :plus), f, :authors,
-      class: 'btn btn-success',
-      data:{ association_insertion_node: '#authors',
-      association_insertion_method: :prepend  },
-      :wrap_object => Proc.new { |author| author.books.build; author }
-      = f.select :authors,
-      options_for_select(Author.all.map { |a| ["#{a.name_with_initial}", a.id] }),
-      {include_blank: true}, {}
+      %div
+        = t('forms.book.authors')
     %div.form-body
+      %div.add-form
+        -# %div
+        = link_to_add_association t('buttons.book.add_author'), f, :authors,
+        class: 'btn btn-success',
+        data:{ association_insertion_node: '#authors',
+        association_insertion_method: :prepend  }
+        -# = link_to_add_association (fa_icon :plus), f, :authors,
+        -# class: 'btn btn-success',
+        -# data:{ association_insertion_node: '#authors',
+        -# association_insertion_method: :prepend  },
+        -# :wrap_object => Proc.new { |author| author.books.build; author }
+        -# %div
+        = f.select :authors,
+        options_for_select(Author.all.map { |a| ["#{a.name_with_initial}", a.id] }),
+        {include_blank: true}, {}
       %table.table
         %thead
           %th
-          %th id!!
           %th= t('activerecord.attributes.author.fn')
           %th= t('activerecord.attributes.author.ln')
           %th= t('activerecord.attributes.author.sn')

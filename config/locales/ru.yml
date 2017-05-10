@@ -15,9 +15,13 @@ ru:
       locations: Расположение
       book: Книга
       authors: Авторы
+    shelf:
+      shelf: Стеллаж
+      locations: Содержимое
+      hall: Зал
   buttons:
     book:
-      add_author: Создать
+      add_author: Добавить выбранного
       remove_author: Удалить
     edit: Изменить
     destroy: Удалить
@@ -116,6 +120,7 @@ ru:
         isbn: ISBN
         quantity: Количество
         authors: Авторы
+        locations: Располжение
       role:
         name: Обозначение
         info: Краткое название

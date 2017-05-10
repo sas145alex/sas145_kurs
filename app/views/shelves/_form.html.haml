@@ -1,14 +1,31 @@
 = form_for @shelf do |f|
   = error_messages_for @shelf
 
-  .row
-    .col-md-8
-      .form-group
-        = f.label :shelf_index
-        = f.text_field :shelf_index, class: 'form-control'
-    .col-md-8
-      .form-group
-        = f.label :hall_id
-        = f.select :hall_id, options_for_select(Hall.all.map { |h| [h.short_name, h.id] })
+  %div.form-wrapper
+    %div.form-header
+      = t('forms.shelf.shelf')
+    %div.form-body
+      .col-lg-12
+        .form-group
+          = f.label :shelf_index
+          = f.text_field :shelf_index, class: 'form-control'
+
   .actions
     = f.submit nil, class: 'btn btn-primary'
+
+  %div.form-wrapper#wrapper_for_hall
+    %div.form-header
+      %div
+        = t('forms.shelf.hall')
+    %div.form-body
+
+      %table.table
+        %thead
+          %th
+            = f.collection_select :hall_id, Hall.all, :id, :short_name,
+            {include_blank: true}, {id: 'select_existing_hall'}
+          %th= t('activerecord.attributes.hall.short_name')
+          %th= t('activerecord.attributes.hall.full_name')
+        %tbody#fields_for_hall
+          = f.fields_for :hall, f.object.hall || f.object.build_hall do |hall|
+            = render 'hall_fields', f: hall
