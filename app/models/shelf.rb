@@ -3,6 +3,8 @@ class Shelf < ActiveRecord::Base
   accepts_nested_attributes_for :hall
 
   has_many :locations
+  accepts_nested_attributes_for :locations
+
   has_many :books, through: :locations
 
   validates :hall_id, :shelf_index, presence: true

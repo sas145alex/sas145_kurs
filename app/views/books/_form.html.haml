@@ -1,5 +1,11 @@
+
+
 = form_for @book do |f|
   = error_messages_for @book
+
+  .pull-right
+  = f.submit nil, class: 'btn btn-primary'
+  
   %div.form-wrapper
     %div.form-header
       = t('forms.book.book')
@@ -75,6 +81,3 @@
         %tbody#locations
           = f.fields_for :locations do |location|
             = render 'location_fields', f: location
-
-  .actions
-    = f.submit nil, class: 'btn btn-primary'

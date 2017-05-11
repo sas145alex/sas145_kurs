@@ -32,14 +32,18 @@ $sidebar-right-border-color: $dark-blue
       text-decoration: none
       color: $sidebar-link-color
   &.toggled
+    ////////////////////////
     padding-left: $sidebar-width
+    ////////////////////////
     #sidebar-wrapper
       width: $sidebar-width
     #sidebar-toggle
       left: $sidebar-width
     #page-content-wrapper
       position: absolute
+      ///////////////////////
       margin-right: -$sidebar-width
+      ///////////////////////
 
 #sidebar-wrapper
   z-index: 500
@@ -63,8 +67,10 @@ $sidebar-right-border-color: $dark-blue
       display: inline
     // border-top: 1px dashed $sidebar-right-border-color
 
+///////////////////////
 #page-content-wrapper
   padding: 15px
+  ///////////////////////
 
 .sidebar-nav
   position: absolute
@@ -168,6 +174,8 @@ $sidebar-right-border-color: $dark-blue
 
 
 @media (min-width: $screen-sm)
+  // #page-content-wrapper
+  //   padding: 20px
   #wrapper
     padding-left: $sidebar-width
     &.toggled

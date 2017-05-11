@@ -1,6 +1,9 @@
 = form_for @shelf do |f|
   = error_messages_for @shelf
 
+  .actions
+  = f.submit nil, class: 'btn btn-primary'
+
   %div.form-wrapper
     %div.form-header
       = t('forms.shelf.shelf')
@@ -10,8 +13,6 @@
           = f.label :shelf_index
           = f.text_field :shelf_index, class: 'form-control'
 
-  .actions
-    = f.submit nil, class: 'btn btn-primary'
 
   %div.form-wrapper#wrapper_for_hall
     %div.form-header
@@ -29,3 +30,22 @@
         %tbody#fields_for_hall
           = f.fields_for :hall, f.object.hall || f.object.build_hall do |hall|
             = render 'hall_fields', f: hall
+
+  %div.form-wrapper
+    %div.form-header
+      = t('forms.book.locations')
+    %div.form-body
+      %table.table.table-hover.table-striped
+        %thead
+          %th
+            = link_to_add_association (fa_icon :plus), f, :locations,
+            class: 'btn btn-success',
+            data:{ association_insertion_node: '#locations',
+            association_insertion_method: :prepend  },
+            :wrap_object => Proc.new { |location| location.build_shelf; location  }
+            -# :wrap_object => Proc.new { |location| @book.locations.build }
+          %th= t('activerecord.attributes.location.rack_number')
+          %th= t('activerecord.attributes.location.book_id')
+        %tbody#locations
+          = f.fields_for :locations do |location|
+            = render 'location_fields', f: location

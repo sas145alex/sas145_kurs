@@ -24,7 +24,7 @@ module SideBarHelper
        :class => 'long'},
     ]}
     result << {
-      :name => 'Интерфейсы',
+      :name => 'Блок 2',
       :icon => 'vcard',
       :children => [
       {:name => 'Книги',
