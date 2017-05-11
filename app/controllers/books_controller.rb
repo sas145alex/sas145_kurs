@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action -> {check_permissions('admin', 'operator')}, except: [:show, :index]
+  skip_before_action :check_app_auth, only: [:show, :index]
+  skip_before_filter :require_login, :only => [:show, :index]
 
   # GET /books
   # GET /books.json
