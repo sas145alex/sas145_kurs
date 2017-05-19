@@ -1,10 +1,10 @@
 =breadcrumb_tag do
   %li.active
-    = "Стеллаж #{@shelf.shelf_index}"
-  %li
+    = t('headers.models')
+  %li.active
     = link_to t('headers.shelves.index'), shelves_path
   %li
-    Модели
+    = @shelf.shelf_index
 
 .page-header
   %h1= @shelf.shelf_index
@@ -51,3 +51,9 @@
   = link_to edit_shelf_path(@shelf), class: 'btn btn-info' do
     = fa_icon (:edit)
     = t('buttons.edit')
+  = link_to @shelf,
+  :method => :delete,
+  :data => { :confirm => t('buttons.confirm.shelf') },
+  class: 'btn btn-danger' do
+    = fa_icon :ban
+    = t('buttons.destroy')

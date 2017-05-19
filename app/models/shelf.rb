@@ -7,7 +7,7 @@ class Shelf < ActiveRecord::Base
 
   has_many :books, through: :locations
 
-  validates :hall_id, :shelf_index, presence: true
+  validates :hall, :shelf_index, presence: true
   validates :shelf_index, length: { minimum: 2 }
   validates :shelf_index, uniqueness: true
 end

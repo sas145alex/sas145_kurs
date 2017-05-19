@@ -1,8 +1,13 @@
 = form_for @shelf do |f|
   = error_messages_for @shelf
 
-  .actions
   = f.submit nil, class: 'btn btn-primary'
+  = link_to @shelf,
+  :method => :delete,
+  :data => { :confirm => t('buttons.confirm.shelf') },
+  class: 'btn btn-danger' do
+    = fa_icon :ban
+    = t('buttons.destroy')
 
   %div.form-wrapper
     %div.form-header

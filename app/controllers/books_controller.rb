@@ -32,12 +32,14 @@ class BooksController < ApplicationController
     # выдираем из массива параметров данные с теми авторами,
     # которые уже были в БД, но еще не были добавлены для этой книги
     existing_authors_ids = []
-    params[:book][:authors_attributes].each do |k,v|
-      current = v
-      if current[:_destroy]=="false" && !current[:id].empty?
-        #  raise current.inspect
-        tmp = params[:book][:authors_attributes].delete(k)
-        existing_authors_ids << tmp[:id]
+    if params[:book].has_key?(:authors_attributes)
+      params[:book][:authors_attributes].each do |k,v|
+        current = v
+        if current[:_destroy]=="false" && !current[:id].empty?
+          #  raise current.inspect
+          tmp = params[:book][:authors_attributes].delete(k)
+          existing_authors_ids << tmp[:id]
+        end
       end
     end
 
@@ -63,17 +65,20 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
+    # raise params.to_s
     # ВНИМАНИЕ КОСТЫЛЬ
     # выдираем из массива параметров данные с теми авторами,
     # которые уже были в БД, но еще не были добавлены для этой книги
     existing_authors_ids = []
-    params[:book][:authors_attributes].each do |k,v|
-      current = v
-      if k.to_i > @book.authors.count  &&
-         current[:_destroy]=="false" && !current[:id].empty?
-        #  raise current.inspect
-        tmp = params[:book][:authors_attributes].delete(k)
-        existing_authors_ids << tmp[:id]
+    if params[:book].has_key?(:authors_attributes)
+      params[:book][:authors_attributes].each do |k,v|
+        current = v
+        if k.to_i > @book.authors.count  &&
+           current[:_destroy]=="false" && !current[:id].empty?
+          #  raise current.inspect
+          tmp = params[:book][:authors_attributes].delete(k)
+          existing_authors_ids << tmp[:id]
+        end
       end
     end
     # raise tmp.to_s
@@ -105,13 +110,6 @@ class BooksController < ApplicationController
     end
   end
 
-  def get_shelves
-    # raise params.inspect
-    respond_to do |format|
-      format.js { @book = Book.find(params[:id]) }
-    end
-  end
-
   def fill_author_form
     # raise params.to_s
     @author = Author.where(id: params[:author_id]).first
@@ -131,8 +129,8 @@ class BooksController < ApplicationController
     def book_params
       # raise params.to_s
       params.require(:book).permit(:name, :volume, :isbn, :quantity,
-        authors: [],
-        author_ids: [],
+        # authors: [],
+        # author_ids: [],
           authors_attributes: Author.attributes_names.map(&:to_sym).push(:_destroy),
           locations_attributes: [:id, :shelf_id, :book_id, :rack_number, :_destroy] )
     end

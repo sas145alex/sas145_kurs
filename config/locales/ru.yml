@@ -9,6 +9,8 @@ ru:
       create: Сохранить
       submit: Сохранить
       update: Сохранить
+  extra:
+    destroy: Уничтожить
 
   forms:
     book:
@@ -43,6 +45,8 @@ ru:
       user: Новый пользователь
       role: Новая роль
   headers:
+    edit: Изменение
+    models: Модели
     shelves:
       row:
         description: Описание

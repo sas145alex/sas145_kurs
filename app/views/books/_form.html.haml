@@ -3,9 +3,15 @@
 = form_for @book do |f|
   = error_messages_for @book
 
-  .pull-right
+
   = f.submit nil, class: 'btn btn-primary'
-  
+  = link_to @book,
+  :method => :delete,
+  :data => { :confirm => t('buttons.confirm.book') },
+  class: 'btn btn-danger' do
+    = fa_icon :ban
+    = t('buttons.destroy')
+
   %div.form-wrapper
     %div.form-header
       = t('forms.book.book')
@@ -27,6 +33,7 @@
         .form-group
           = f.label :quantity
           = f.number_field :quantity, class: 'form-control'
+          = f.hidden_field :id
         -# .col-md-8
           -# .form-group
             -# = f.label :authors
@@ -49,12 +56,18 @@
         -# association_insertion_method: :prepend  },
         -# :wrap_object => Proc.new { |author| author.books.build; author }
         -# %div
-        = f.select :authors,
+        -# = f.select :authors,
+        -# options_for_select(Author.all.map { |a| ["#{a.name_with_initial}", a.id] }),
+        -# {include_blank: true}, {}
+        = select_tag 'book_authors',
         options_for_select(Author.all.map { |a| ["#{a.name_with_initial}", a.id] }),
-        {include_blank: true}, {}
+        {include_blank: true}
       %table.table
         %thead
           %th
+          - if params.has_key?(:id)
+            -# %th= t('extra.destroy')
+            %th
           %th= t('activerecord.attributes.author.fn')
           %th= t('activerecord.attributes.author.ln')
           %th= t('activerecord.attributes.author.sn')
@@ -73,11 +86,13 @@
             = link_to_add_association (fa_icon :plus), f, :locations,
             class: 'btn btn-success',
             data:{ association_insertion_node: '#locations',
-            association_insertion_method: :prepend  },
-            :wrap_object => Proc.new { |location| location.build_book; location  }
+            association_insertion_method: :prepend  }
+            -# :wrap_object => Proc.new { |location| location.build_book; location  }
             -# :wrap_object => Proc.new { |location| @book.locations.build }
+          %th= t('activerecord.attributes.location.book_id')
           %th= t('activerecord.attributes.location.shelf_id')
           %th= t('activerecord.attributes.location.rack_number')
         %tbody#locations
           = f.fields_for :locations do |location|
+            -# = location.hidden_field :book_id
             = render 'location_fields', f: location

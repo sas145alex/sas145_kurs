@@ -1,10 +1,10 @@
 =breadcrumb_tag do
   %li.active
-    = t('headers.shelves.new')
-  %li
+    = t('headers.models')
+  %li.active
     = link_to t('headers.shelves.index'), shelves_path
   %li
-    Модели
+    = t('headers.shelves.new')
 
 .page-header
   %h1= t('headers.shelves.new')
