@@ -1,4 +1,4 @@
-%div.nested-fields{ class: "existing-author#{f.object.id}" }
+%div.nested-fields{ class: "existing-author#{f.object.try(:author).try(:id)}" }
   .form-group
     .row
       .col-md-4
