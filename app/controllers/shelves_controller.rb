@@ -44,7 +44,7 @@ class ShelvesController < ApplicationController
 
     respond_to do |format|
       if @shelf.save
-        format.html { redirect_to @shelf, notice: 'Shelf was successfully created.' }
+        format.html { redirect_to @shelf, notice: t('notice.shelf.create') }
         format.json { render :show, status: :created, location: @shelf }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class ShelvesController < ApplicationController
     # raise params.to_s
     respond_to do |format|
       if @shelf.update(shelf_params)
-        format.html { redirect_to @shelf, notice: 'Shelf was successfully updated.' }
+        format.html { redirect_to @shelf, notice: t('notice.shelf.update') }
         format.json { render :show, status: :ok, location: @shelf }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class ShelvesController < ApplicationController
   def destroy
     @shelf.destroy
     respond_to do |format|
-      format.html { redirect_to shelves_url, notice: 'Shelf was successfully destroyed.' }
+      format.html { redirect_to shelves_url, notice: t('notice.shelf.destroy') }
       format.json { head :no_content }
     end
   end
@@ -94,6 +94,7 @@ class ShelvesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def shelf_params
       params.require(:shelf).permit(:shelf_index, :hall_id,
-        hall_attributes: [:short_name, :full_name, :id])
+        hall_attributes: [:short_name, :full_name, :id],
+        locations_attributes: [:id, :shelf_id, :book_id, :rack_number, :_destroy] )
     end
 end

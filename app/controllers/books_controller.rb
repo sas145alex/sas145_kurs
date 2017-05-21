@@ -53,7 +53,7 @@ class BooksController < ApplicationController
           @book.authors << author
         end
 
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.html { redirect_to @book, t('notice.book.update') }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -91,7 +91,7 @@ class BooksController < ApplicationController
           @book.authors << author
         end
 
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        format.html { redirect_to @book, notice: t('notice.book.update') }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit }
@@ -105,7 +105,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.html { redirect_to books_url, notice: t('notice.book.destroy') }
       format.json { head :no_content }
     end
   end

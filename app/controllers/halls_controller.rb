@@ -57,7 +57,7 @@ class HallsController < ApplicationController
   def destroy
     @hall.destroy
     respond_to do |format|
-      format.html { redirect_to halls_url, notice: 'Hall was successfully destroyed.' }
+      format.html { redirect_to shelves_url, notice: t('notice.hall.destroy') }
       format.json { head :no_content }
     end
   end

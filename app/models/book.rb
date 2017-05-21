@@ -5,7 +5,7 @@ class Book < ActiveRecord::Base
   accepts_nested_attributes_for :authors,
       reject_if: :all_blank, allow_destroy: true
 
-  has_many :locations
+  has_many :locations, dependent: :destroy
   has_many :shelves, through: :locations
   accepts_nested_attributes_for :locations, allow_destroy: true,
     reject_if: proc { |attributes| attributes[:rack_number].blank? }

@@ -18,13 +18,17 @@
           = f.label :shelf_index
           = f.text_field :shelf_index, class: 'form-control'
 
-
   %div.form-wrapper#wrapper_for_hall
     %div.form-header
       %div
         = t('forms.shelf.hall')
     %div.form-body
-
+      = link_to @shelf.hall,
+      :method => :delete,
+      :data => { :confirm => t('buttons.confirm.hall') },
+      class: 'btn btn-danger' do
+        = fa_icon :ban
+        = t('buttons.destroy')
       %table.table
         %thead
           %th
@@ -46,9 +50,7 @@
             = link_to_add_association (fa_icon :plus), f, :locations,
             class: 'btn btn-success',
             data:{ association_insertion_node: '#locations',
-            association_insertion_method: :prepend  },
-            :wrap_object => Proc.new { |location| location.build_shelf; location  }
-            -# :wrap_object => Proc.new { |location| @book.locations.build }
+            association_insertion_method: :prepend  }
           %th= t('activerecord.attributes.location.rack_number')
           %th= t('activerecord.attributes.location.book_id')
         %tbody#locations
