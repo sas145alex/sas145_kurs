@@ -20,7 +20,7 @@
         .col-md-3.author-author-index
           = fa.label :author_index
           = fa.text_field :author_index, class: 'form-control'
-        %div.author-id
+        .author-id
           = fa.hidden_field :id
       .links
         = link_to_remove_association (fa_icon :remove) + t('buttons.delete'), f, class: 'btn btn-warning'

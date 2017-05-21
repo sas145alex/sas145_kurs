@@ -13,8 +13,8 @@
     %div.form-header
       = t('forms.shelf.shelf')
     %div.form-body
-      .col-lg-12
-        .form-group
+      .row
+        .col-md-12
           = f.label :shelf_index
           = f.text_field :shelf_index, class: 'form-control'
 
@@ -23,22 +23,22 @@
       %div
         = t('forms.shelf.hall')
     %div.form-body
-      = link_to @shelf.hall,
-      :method => :delete,
-      :data => { :confirm => t('buttons.confirm.hall') },
-      class: 'btn btn-danger' do
-        = fa_icon :ban
-        = t('buttons.destroy')
-      %table.table
-        %thead
-          %th
-            = f.collection_select :hall_id, Hall.all, :id, :short_name,
-            {include_blank: true}, {id: 'select_existing_hall'}
-          %th= t('activerecord.attributes.hall.short_name')
-          %th= t('activerecord.attributes.hall.full_name')
-        %tbody#fields_for_hall
-          = f.fields_for :hall, f.object.hall || f.object.build_hall do |hall|
-            = render 'hall_fields', f: hall
+      #hall.assotiations
+        .mb5
+          .links
+            - if params[:action] == 'edit'
+              - if !f.object.new_record?
+                = link_to @shelf.hall,
+                :method => :delete,
+                :data => { :confirm => t('buttons.confirm.hall') },
+                class: 'btn btn-danger' do
+                  = fa_icon :ban
+                  = t('buttons.destroy')
+          = f.label :hall_id
+          = f.collection_select :hall_id, Hall.all, :id, :short_name,
+          {include_blank: true}, {id: 'select_existing_hall', class: 'form-control'}
+        = f.fields_for :hall, f.object.hall || f.object.build_hall do |hall|
+          = render 'hall_fields', f: hall
 
   %div.form-wrapper
     %div.form-header

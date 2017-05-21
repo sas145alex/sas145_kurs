@@ -4,4 +4,4 @@
   %td
     = f.number_field :rack_number, class: 'form-control'
   %td
-    = f.collection_select :book_id, Book.all, :id, :name
+    = f.collection_select :book_id, Book.all, :id, :name , {}, {class: 'form-control'}
