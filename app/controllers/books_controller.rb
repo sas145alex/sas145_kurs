@@ -31,29 +31,30 @@ class BooksController < ApplicationController
     # ВНИМАНИЕ КОСТЫЛЬ
     # выдираем из массива параметров данные с теми авторами,
     # которые уже были в БД, но еще не были добавлены для этой книги
-    existing_authors_ids = []
-    if params[:book].has_key?(:authors_attributes)
-      params[:book][:authors_attributes].each do |k,v|
-        current = v
-        if current[:_destroy]=="false" && !current[:id].empty?
-          #  raise current.inspect
-          tmp = params[:book][:authors_attributes].delete(k)
-          existing_authors_ids << tmp[:id]
-        end
-      end
-    end
+    # existing_authors_ids = []
+    # if params[:book].has_key?(:authors_attributes)
+    #   params[:book][:authors_attributes].each do |k,v|
+    #     current = v
+    #     if current[:_destroy]=="false" && !current[:id].empty?
+    #       #  raise current.inspect
+    #       tmp = params[:book][:authors_attributes].delete(k)
+    #       existing_authors_ids << tmp[:id]
+    #     end
+    #   end
+    # end
 
     @book = Book.new(book_params)
 
     respond_to do |format|
       if @book.save
         # ПРОДОЛЖЕНИЕ КОСТЫЛЯ
-        existing_authors_ids.each do |id|
-          author = Author.find(id)
-          @book.authors << author
-        end
+        # existing_authors_ids.each do |id|
+        #   author = Author.find(id)
+        #   @book.authors << author
+        # end
 
-        format.html { redirect_to @book, t('notice.book.update') }
+        # format.html { redirect_to @book, t('notice.book.update') }
+        format.html { redirect_to @book }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -66,30 +67,31 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1.json
   def update
     # raise params.to_s
+
     # ВНИМАНИЕ КОСТЫЛЬ
     # выдираем из массива параметров данные с теми авторами,
     # которые уже были в БД, но еще не были добавлены для этой книги
-    existing_authors_ids = []
-    if params[:book].has_key?(:authors_attributes)
-      params[:book][:authors_attributes].each do |k,v|
-        current = v
-        if k.to_i > @book.authors.count  &&
-           current[:_destroy]=="false" && !current[:id].empty?
-          #  raise current.inspect
-          tmp = params[:book][:authors_attributes].delete(k)
-          existing_authors_ids << tmp[:id]
-        end
-      end
-    end
+    # existing_authors_ids = []
+    # if params[:book].has_key?(:authors_attributes)
+    #   params[:book][:authors_attributes].each do |k,v|
+    #     current = v
+    #     if k.to_i > @book.authors.count  &&
+    #        current[:_destroy]=="false" && !current[:id].empty?
+    #       #  raise current.inspect
+    #       tmp = params[:book][:authors_attributes].delete(k)
+    #       existing_authors_ids << tmp[:id]
+    #     end
+    #   end
+    # end
     # raise tmp.to_s
     # raise book_params.to_s
     respond_to do |format|
       if @book.update(book_params)
         # ПРОДОЛЖЕНИЕ КОСТЫЛЯ
-        existing_authors_ids.each do |id|
-          author = Author.find(id)
-          @book.authors << author
-        end
+        # existing_authors_ids.each do |id|
+        #   author = Author.find(id)
+        #   @book.authors << author
+        # end
 
         format.html { redirect_to @book, notice: t('notice.book.update') }
         format.json { render :show, status: :ok, location: @book }
@@ -111,8 +113,9 @@ class BooksController < ApplicationController
   end
 
   def fill_author_form
-    # raise params.to_s
+    # raise "ПАРАМЕТРЫ #{params.to_s}"
     @author = Author.where(id: params[:author_id]).first
+    @timestamp = params[:timestamp].to_i
     respond_to do |format|
       format.js
     end
@@ -131,7 +134,8 @@ class BooksController < ApplicationController
       params.require(:book).permit(:name, :volume, :isbn, :quantity,
         # authors: [],
         # author_ids: [],
-          authors_attributes: Author.attributes_names.map(&:to_sym).push(:_destroy),
+          author_books_attributes: [:_destroy, :author_id, :id,
+            author_attributes: Author.attributes_names.map(&:to_sym).push(:_destroy)],
           locations_attributes: [:id, :shelf_id, :book_id, :rack_number, :_destroy] )
     end
 end

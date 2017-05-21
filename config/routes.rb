@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
-  get 'books/fill_author_form' => 'books#fill_author_form'
+  resources :author_books
+  post 'fill_author_form' => 'books#fill_author_form'
   post 'fill_hall_form' => 'shelves#fill_hall_form'
   resources :locations
-  resources :books do
-    member do
-      get 'fill_author_form'
-    end
-  end
+  resources :books
 
   resources :authors
   resources :shelves do
     member do
       get :get_books
-      # get 'fill_hall_form'
     end
   end
   resources :halls

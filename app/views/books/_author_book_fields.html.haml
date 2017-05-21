@@ -1,0 +1,31 @@
+%div.nested-fields{ class: "existing-author#{f.object.id}" }
+  .form-group
+    .row
+      .col-md-4
+        = f.label :author_id
+        = f.collection_select :author_id, Author.all,
+        :id, :ln, {include_blank: true, }
+
+    = f.fields_for :author, f.object.author || f.object.build_author do |fa|
+      .row
+        .col-md-3.author-fn
+          = fa.label :fn
+          = fa.text_field :fn, class: 'form-control'
+        .col-md-3.author-ln
+          = fa.label :ln
+          = fa.text_field :ln, class: 'form-control'
+        .col-md-3.author-sn
+          = fa.label :sn
+          = fa.text_field :sn, class: 'form-control'
+        .col-md-3.author-author-index
+          = fa.label :author_index
+          = fa.text_field :author_index, class: 'form-control'
+        %div.author-id
+          = fa.hidden_field :id
+      .links
+        = link_to_remove_association (fa_icon :remove) + t('buttons.delete'), f, class: 'btn btn-warning'
+        - if params[:action] == 'edit'
+          - if !f.object.new_record?
+            = link_to (fa_icon :ban) + t('buttons.destroy'), f.object.author, method: :delete, class: 'destroy-author btn btn-danger',
+            :data => { :confirm => t('buttons.confirm.author') },
+            remote: true

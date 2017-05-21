@@ -2,6 +2,10 @@
   border: 1px black solid
   margin-bottom: 3px
 
+  .row
+    margin: 0
+    border: 0
+
 
   .form-header
     padding: 5px
@@ -16,13 +20,14 @@
     padding: 4px
     overflow: auto
 
+    .form-group
+      border-top: 1px solid black
+
     .add-form
       display: flex
       flex-direction: row
       justify-content: space-around
-
-      %div
-        max-width: 150px
+      margin-bottom: 3px
 
   td
     text-align: center
@@ -31,3 +36,7 @@
 
   input[type=text]
     min-width: 100px
+
+  .links
+    padding-left: 15px
+    padding-top: 15px

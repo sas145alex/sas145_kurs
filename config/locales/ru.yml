@@ -9,8 +9,6 @@ ru:
       create: Сохранить
       submit: Сохранить
       update: Сохранить
-  extra:
-    destroy: Уничтожить
   notice:
     book:
       update: Книга была обновлена
@@ -33,11 +31,13 @@ ru:
       hall: Зал
   buttons:
     book:
-      add_author: Добавить выбранного
+      add_author: Добавить автора
       remove_author: Удалить
     edit: Изменить
     destroy: Удалить
+    delete: Удалить связь
     show: Показать
+    destroy_hard: Уничтожить
     confirm:
       shelf: Действительно удалить стеллаж?
       author: Действительно удалить автора?
@@ -128,7 +128,7 @@ ru:
         fn: Имя
         ln: Фамилия
         sn: Отчество
-        author_index: Авторский указатель
+        author_index: Авт. указатель
         books: Книги автора/ISBN
       book:
         name: Название
@@ -147,6 +147,9 @@ ru:
         shelf: Стеллаж
         shelf_id: Стеллаж
         rack_number: Номер полки
+      author_book:
+        author: Автор
+        author_id: Автор
     # errors:
     #   models:
     #     person:

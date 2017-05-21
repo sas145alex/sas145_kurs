@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501085108) do
+ActiveRecord::Schema.define(version: 20170521104448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "author_books", force: :cascade do |t|
+    t.integer "book_id",   null: false
+    t.integer "author_id", null: false
+  end
+
+  add_index "author_books", ["author_id", "book_id"], name: "index_author_books_on_author_id_and_book_id", unique: true, using: :btree
+  add_index "author_books", ["author_id"], name: "index_author_books_on_author_id", using: :btree
+  add_index "author_books", ["book_id"], name: "index_author_books_on_book_id", using: :btree
 
   create_table "authors", force: :cascade do |t|
     t.string   "fn",           null: false
@@ -26,13 +35,6 @@ ActiveRecord::Schema.define(version: 20170501085108) do
   end
 
   add_index "authors", ["ln", "author_index"], name: "index_authors_on_ln_and_author_index", unique: true, using: :btree
-
-  create_table "authors_books", id: false, force: :cascade do |t|
-    t.integer "author_id", null: false
-    t.integer "book_id",   null: false
-  end
-
-  add_index "authors_books", ["author_id", "book_id"], name: "index_authors_books_on_author_id_and_book_id", unique: true, using: :btree
 
   create_table "books", force: :cascade do |t|
     t.string   "name",       null: false
@@ -150,6 +152,8 @@ ActiveRecord::Schema.define(version: 20170501085108) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
+  add_foreign_key "author_books", "authors"
+  add_foreign_key "author_books", "books"
   add_foreign_key "locations", "books"
   add_foreign_key "locations", "shelves"
   add_foreign_key "role_users", "roles"

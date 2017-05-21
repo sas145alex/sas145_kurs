@@ -9,5 +9,5 @@
 
 = link_to t('buttons.new.book'), new_book_path, class: 'btn btn-primary'
 
-- @books.each do |book|
+- @books.order('created_at desc').each do |book|
   = render 'book', book: book
