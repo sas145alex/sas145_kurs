@@ -8,4 +8,10 @@ class Location < ActiveRecord::Base
     greater_than: 0, message: "должно быть положительным" }
   validates :rack_number, uniqueness: {
     scope: [:book_id, :shelf_id], message: "и остальные поля должны быть уникальными"}
+
+
+
+  def self.attributes_names
+    self.new.attributes.keys - ['created_at', 'updated_at']
+  end
 end

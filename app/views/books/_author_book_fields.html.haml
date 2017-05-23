@@ -23,7 +23,8 @@
         .author-id
           = fa.hidden_field :id
       .links
-        = link_to_remove_association (fa_icon :remove) + t('buttons.delete'), f, class: 'btn btn-warning'
+        = link_to_remove_association (fa_icon :remove) + t('buttons.delete'),
+        f, class: 'btn btn-warning'
         - if params[:action] == 'edit'
           - if !f.object.new_record?
             = link_to (fa_icon :ban) + t('buttons.destroy'), f.object.author, method: :delete, class: 'destroy-author btn btn-danger',

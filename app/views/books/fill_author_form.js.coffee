@@ -20,7 +20,7 @@ if !authorNil && uniqAuthorOnPage
 else
   # пришел запрос на неуникального автора
   if ! uniqAuthorOnPage
-    $("#book_author_books_attributes_" + timestamp + "_author_id").val( 0 );
+    $("#book_author_books_attributes_" + timestamp + "_author_id").val( 0 )
   id = ""
   fn = ""
   ln = ""

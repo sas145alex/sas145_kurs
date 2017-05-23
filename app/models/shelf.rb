@@ -10,4 +10,10 @@ class Shelf < ActiveRecord::Base
   validates :hall, :shelf_index, presence: true
   validates :shelf_index, length: { minimum: 2 }
   validates :shelf_index, uniqueness: true
+
+
+
+  def self.attributes_names
+    self.new.attributes.keys - ['created_at', 'updated_at']
+  end
 end

@@ -30,6 +30,7 @@ ru:
       locations: Содержимое
       hall: Зал
   buttons:
+    search: Поиск
     book:
       add_author: Добавить автора
       remove_author: Удалить
@@ -72,6 +73,8 @@ ru:
       edit: Редактирование автора
       new: Создание автора
     books:
+      result: Результат
+      search: Поиск
       row:
         description: Описание
         authors: Авторы

@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   post 'fill_author_form' => 'books#fill_author_form'
   post 'fill_hall_form' => 'shelves#fill_hall_form'
   resources :locations
-  resources :books
+  resources :books do
+    collection do
+      get :search
+      post :search
+    end
+  end
 
   resources :authors
   resources :shelves do

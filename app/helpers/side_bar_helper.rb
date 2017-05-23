@@ -24,9 +24,12 @@ module SideBarHelper
        :class => 'long'},
     ]}
     result << {
-      :name => 'Блок 2',
+      :name => 'Модели',
       :icon => 'vcard',
       :children => [
+      {:name => 'Поиск',
+       :controller => :books, :action => :search,
+       :icon => 'search'},
       {:name => 'Книги',
        :controller => :books, :action => :index,
        :icon => 'book'},
@@ -36,7 +39,7 @@ module SideBarHelper
        :class => 'long'}
     ]}
     result << {
-      :name => 'Модели',
+      :name => 'Скаффолды',
       :icon => 'list',
       :children => [
         {:name => 'Залы',

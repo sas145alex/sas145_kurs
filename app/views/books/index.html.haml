@@ -7,7 +7,10 @@
 .page-header
   %h1= t('headers.books.index')
 
-= link_to t('buttons.new.book'), new_book_path, class: 'btn btn-primary'
+= link_to fa_icon(:search) + t('buttons.search'),
+search_books_path, class: 'btn btn-primary'
+.pull-right
+  = link_to t('buttons.new.book'), new_book_path, class: 'btn btn-primary'
 
 - @books.order('created_at desc').each do |book|
   = render 'book', book: book
