@@ -9,7 +9,7 @@
 .page-header
   %h1= @book.name
 
-%div.attributes
+%div.table-wrapper
   %h3= t('forms.book.book')
   %table.table.table-hover.table-striped.center
     %tr
@@ -23,7 +23,7 @@
       %td= @book.isbn
       %td= @book.quantity
 
-%div.attributes
+%div.table-wrapper
   %h3= Book.human_attribute_name(:authors)
   %table.table.table-hover.table-striped.center
     %tr
@@ -41,7 +41,7 @@
           = author.sn
         %td
           = author.author_index
-%div.attributes
+%div.table-wrapper
   %h3= Book.human_attribute_name(:locations)
   %table.table.table-hover.table-striped.center
     %tr

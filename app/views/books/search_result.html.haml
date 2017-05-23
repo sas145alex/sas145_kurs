@@ -8,16 +8,17 @@
   %li
     = t('headers.books.result')
 
-%table.table.table-hover.table-striped.center
-  %thead
-    %th= Book.human_attribute_name(:name)
-    %th= Book.human_attribute_name(:isbn)
-    %th= Book.human_attribute_name(:quantity)
-    %th= Book.human_attribute_name(:volume)
-  %tbody
-    - @books.each do |book|
-      %tr
-        %td= book.name
-        %td= book.isbn
-        %td= book.quantity
-        %td= book.volume
+.table-wrapper
+  %table.table.table-hover.table-striped.center
+    %thead
+      %th= Book.human_attribute_name(:name)
+      %th= Book.human_attribute_name(:isbn)
+      %th= Book.human_attribute_name(:quantity)
+      %th= Book.human_attribute_name(:volume)
+    %tbody
+      - @books.each do |book|
+        %tr
+          %td= book.name
+          %td= book.isbn
+          %td= book.quantity
+          %td= book.volume

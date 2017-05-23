@@ -32,6 +32,10 @@ Rails.application.routes.draw do
     member do
       get :activate
     end
+    collection do
+      post :create_by_admin
+      get :new_by_admin
+    end
   end
 
 

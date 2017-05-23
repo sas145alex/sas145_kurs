@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def new_by_admin
+    @user = User.new
+  end
+
   # GET /users/1/edit
   def edit
   end
@@ -32,6 +36,20 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to login_path(), notice: 'Пользователь создан. Проверьте вашу почту для активации пользователя.' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_by_admin
+    @user = User.new(user_params)
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to users_path(), notice: 'Пользователь создан. На его почту отправлено сообщение об активации.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -82,6 +100,11 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation,
-        :activation_state, :activation_token, :activation_token_expires_at)
+        :activation_state, :activation_token, :activation_token_expires_at,
+      # nested_start
+      # Добавляем связанные атрибуты
+        {role_users_attributes: [:_destroy, :id, :role_id, :data]}
+      # nested_finish
+      )
     end
 end
