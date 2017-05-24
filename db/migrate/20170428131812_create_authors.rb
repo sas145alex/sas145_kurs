@@ -5,7 +5,6 @@ class CreateAuthors < ActiveRecord::Migration
       t.string :ln, null: false
       t.string :sn
       t.string :author_index, null: false
-
       t.timestamps null: false
     end
 
