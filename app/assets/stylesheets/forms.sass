@@ -41,9 +41,24 @@
     padding-left: 15px
     padding-top: 15px
 
-.table-wrapper
-  width: 100%
-  overflow-y: auto
-
 .mb5
   margin-bottom: 5px
+
+@media screen and (max-width: $screen-sm)
+  .adaptive-table
+    thead
+      display: none
+    tr
+      border-top: 1px solid black
+      border-bottom: 1px solid black
+      margin-bottom: 10px
+      display: block
+    td
+      text-align: right !important
+      min-height: 40px
+      display: block
+    td:before
+      content: attr(data-label)
+      float: left
+      text-transform: uppercase
+      font-weight: bold

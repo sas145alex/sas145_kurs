@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :books do
     collection do
       get :search
-      post :search
+      # post :search
     end
   end
 

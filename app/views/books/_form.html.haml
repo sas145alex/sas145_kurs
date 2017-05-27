@@ -54,11 +54,8 @@
             class: 'btn btn-success',
             data:{ association_insertion_node: '#locations',
             association_insertion_method: :prepend  }
-            -# :wrap_object => Proc.new { |location| location.build_book; location  }
-            -# :wrap_object => Proc.new { |location| @book.locations.build }
           %th= t('activerecord.attributes.location.shelf_id')
           %th= t('activerecord.attributes.location.rack_number')
         %tbody#locations
           = f.fields_for :locations do |location|
-            -# = location.hidden_field :book_id
             = render 'location_fields', f: location

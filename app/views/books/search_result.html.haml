@@ -9,7 +9,7 @@
     = t('headers.books.result')
 
 .table-wrapper
-  %table.table.table-hover.table-striped.center
+  %table.table.table-hover.center.table-striped.adaptive-table
     %thead
       %th= Book.human_attribute_name(:name)
       %th= Book.human_attribute_name(:isbn)
@@ -18,7 +18,11 @@
     %tbody
       - @books.each do |book|
         %tr
-          %td= book.name
-          %td= book.isbn
-          %td= book.quantity
-          %td= book.volume
+          %td{ data: {label: Book.human_attribute_name(:name)} }
+            = book.name
+          %td{ data: {label: Book.human_attribute_name(:isbn)} }
+            = book.isbn
+          %td{ data: {label: Book.human_attribute_name(:quantity)} }
+            = book.quantity
+          %td{ data: {label: Book.human_attribute_name(:volume)} }
+            = book.volume
