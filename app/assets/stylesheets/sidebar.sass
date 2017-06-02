@@ -44,7 +44,7 @@ $sidebar-right-border-color: $dark-blue
     #page-content-wrapper
       // position: absolute
       ///////////////////////
-      // margin-right: $sidebar-width
+      // margin-right: -$sidebar-width
       ///////////////////////
 
 #sidebar-wrapper
@@ -180,18 +180,18 @@ $sidebar-right-border-color: $dark-blue
 @media (max-width: $screen-sm)
   // #page-content-wrapper
   //   padding: 20px
-  #wrapper
-    // padding-left: $sidebar-width
-    &.toggled
-      padding-right: 0
-      #sidebar-wrapper
-        width: 0
-      #page-content-wrapper
-        // position: relative
-        // margin-right: 0
-      #sidebar-toggle
-        right: 0
-    #sidebar-toggle
-      right: $sidebar-width
   #sidebar-wrapper
-    width: $sidebar-width
+    width: 0
+  #wrapper
+    padding-right: 0
+    &.toggled
+      padding-right: $sidebar-width
+      #sidebar-wrapper
+        width: $sidebar-width
+      #page-content-wrapper
+        position: relative
+        margin-right: 0
+      #sidebar-toggle
+        right: $sidebar-width
+    #sidebar-toggle
+      right: 0
